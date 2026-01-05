@@ -1,0 +1,15 @@
+{% comment %}
+core/team.html
+{% endcomment %}
+<div class="team-grid">
+    {% for m in members %}
+    <div class="member">
+        <div class="avatar" aria-hidden="true"></div>
+        <div class="name">{{ m.name }}</div>
+        <div class="role">{{ m.role }}</div>
+        <div class="more">
+            <a href="{% url 'team_details' m.id %}">Voir plus</a>
+        </div>
+    </div>
+    {% endfor %}
+</div>
