@@ -7,6 +7,7 @@ export class Team {
 
     @Column()
     name: string;
+
     @Column()
     poste: string;
 
