@@ -2,7 +2,7 @@ from django.shortcuts import render
 
 def home(request):
     context = {
-        "titre" : "Bienvenue à Terre Fertile"
+        "titre" : "Pourquoi Terres Fertiles❓"
     }
     return render(request, 'core/home.html', context)
 

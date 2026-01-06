@@ -1,7 +1,85 @@
 {% extends 'core/base.html' %}
+{% load static %}
 
 {% block title %}Accueil{% endblock %}
 
 {% block content %}
-<h1> {{titre}} 👋</h1>
+<div class="home-container">
+    <link rel="stylesheet" href="{% static 'core/css/carousel.css' %}">
+        <!-- Bootstrap modern carousel -->
+        <div id="homeCarousel" class="carousel slide carousel-fade rounded shadow-sm" data-bs-ride="carousel" data-bs-interval="5000">
+            <div class="carousel-indicators">
+                <button type="button" data-bs-target="#homeCarousel" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+                <button type="button" data-bs-target="#homeCarousel" data-bs-slide-to="1" aria-label="Slide 2"></button>
+                <button type="button" data-bs-target="#homeCarousel" data-bs-slide-to="2" aria-label="Slide 3"></button>
+            </div>
+            <div class="carousel-inner">
+                <div class="carousel-item active">
+                    <img src="{% static 'core/images/c1.png' %}" class="d-block w-100" alt="slide 1">
+                    <div class="carousel-caption d-none d-md-block">
+                        <h2 class="animate-caption">Terres Fertiles</h2>
+                        <p class="animate-caption text-light">Valoriser localement les terres inertes pour des projets durables.</p>
+                        <p class="animate-caption"><a class="btn btn-primary btn-sm" href="#">En savoir plus</a></p>
+                    </div>
+                </div>
+                <div class="carousel-item">
+                    <img src="{% static 'core/images/c2.png' %}" class="d-block w-100" alt="slide 2">
+                    <div class="carousel-caption d-none d-md-block">
+                        <h2 class="animate-caption">Traçabilité & Qualité</h2>
+                        <p class="animate-caption text-light">Une filière organisée avec expertise agronomique et traçabilité.</p>
+                    </div>
+                </div>
+                <div class="carousel-item">
+                    <img src="{% static 'core/images/home_terre_fertile.png' %}" class="d-block w-100" alt="slide 3">
+                    <div class="carousel-caption d-none d-md-block">
+                        <h2 class="animate-caption">Réseau d'acteurs</h2>
+                        <p class="animate-caption text-light">Coopération locale pour des sols à haute valeur agronomique.</p>
+                    </div>
+                </div>
+            </div>
+            <button class="carousel-control-prev" type="button" data-bs-target="#homeCarousel" data-bs-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Précédent</span>
+            </button>
+            <button class="carousel-control-next" type="button" data-bs-target="#homeCarousel" data-bs-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Suivant</span>
+            </button>
+        </div>
+
+    <div class="desc-container">
+        <div class="zone-image">
+            <img src="{% static 'core/images/home_terre_fertile.png' %}" alt="Terre Fertile" class="home-image">
+        </div>
+        <div class="zone-texte">
+            <p>
+                <h1> {{titre}} </h1>
+                La terre dite « végétale » n’est pas une ressource infinie. Elle semble pourtant nécessaire pour
+                végétaliser nos
+                villes
+                de demain. Provenant de toujours plus loin de nos villes, son apport dans nos chantiers urbains a un
+                fort impact
+                environnemental.
+
+                Une alternative est pourtant possible : le réemploi et la valorisation agronomique de terres inertes
+                issues de
+                chantier
+                de terrassement locaux. Cette valorisation nécessite une expertise agronomique, une traçabilité mais
+                surtout un
+                réseau
+                d’acteurs engagés pour cette filière émergente de production de Terres Fertiles®.
+
+                À l’initiative des principales entreprises du paysages de l’agglomération lyonnaise, Terres Fertiles a
+                émergé dans
+                le
+                but de faciliter la mise en place de cette filière et la prise en compte de la valeur agronomique des
+                sols dans les
+                aménagements.
+            </p>
+        </div>
+        
+    </div>
+
+</div>
+    <!-- custom carousel.js no longer required (Bootstrap bundle included in base.html) -->
 {% endblock %}
