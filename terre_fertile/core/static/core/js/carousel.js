@@ -36,6 +36,7 @@ function initCarousel() {
   if (container) {
     container.addEventListener('mouseenter', stop);
     container.addEventListener('mouseleave', start);
+    container.style.color = "orange";
   }
 
   // init

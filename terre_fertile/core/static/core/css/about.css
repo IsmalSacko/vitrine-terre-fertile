@@ -16,6 +16,28 @@
     padding: 0 20px;
 }
 
+@media (max-width: 768px) {
+    .hero-inner {
+        flex-direction: column;
+        gap: 18px;
+        padding-left: 12px;
+        padding-right: 12px;
+        align-items: stretch;
+    }
+
+    .hero-image {
+        width: 100%;
+        max-width: 100%;
+        height: auto;
+    }
+
+    .container {
+        display: block;
+        padding-left: 12px;
+        padding-right: 12px;
+    }
+}
+
 .hero-text .kicker {
     color: #9ed32b;
     font-weight: 700;
