@@ -1,0 +1,181 @@
+{% extends 'core/base.html' %}
+{% load static %}
+
+{% block title %}Accueil{% endblock %}
+
+{% block content %}
+
+<!-- small edit button for staff -->
+{% if request.user.is_staff %}
+  <div class="container-fluid px-4 mt-1 mb-2">
+    <div class="text-end me-3">
+      <a href="{% url 'home_edit' %}" class="btn btn-sm btn-outline-primary updateBtn" > Modifier la page
+          <img src="{% static 'core/images/check.png' %}" alt="Edit" style="width:25px; height:16px;">
+      </a>
+    </div>
+  </div>
+{% endif %}
+
+<!-- HERO / CAROUSEL -->
+<section class="hero-carousel">
+    <div class="container-fluid px-3">
+        <div class="row g-4 align-items-stretch">
+
+            <!-- Colonne gauche : carousel (50%) -->
+            <div class="col-md-6">
+                <div id="homeCarousel" class="carousel slide carousel-fade rounded shadow h-100" data-bs-ride="carousel"
+                    data-bs-interval="5000">
+
+                    <div class="carousel-indicators">
+                        {% if carousel_items and carousel_items|length > 0 %}
+                            {% for item in carousel_items %}
+                                <button type="button" data-bs-target="#homeCarousel" data-bs-slide-to="{{ forloop.counter0 }}" class="{% if forloop.first %}active{% endif %}"></button>
+                            {% endfor %}
+                        {% else %}
+                            <button type="button" data-bs-target="#homeCarousel" data-bs-slide-to="0" class="active"></button>
+                            <button type="button" data-bs-target="#homeCarousel" data-bs-slide-to="1"></button>
+                            <button type="button" data-bs-target="#homeCarousel" data-bs-slide-to="2"></button>
+                        {% endif %}
+                    </div>
+
+                    <div class="carousel-inner">
+
+                        {% if carousel_items and carousel_items|length > 0 %}
+                            {% for item in carousel_items %}
+                                <div class="carousel-item {% if forloop.first %}active{% endif %}">
+                                    <img src="{{ item.image.url }}" class="d-block w-100 h-100" style="object-fit: cover;" alt="{{ item.titre|default:'Slide' }}">
+                                    {% if item.titre or item.description %}
+                                    <div class="carousel-caption">
+                                        {% if item.titre %}<h2>{{ item.titre }}</h2>{% endif %}
+                                        {% if item.description %}<p>{{ item.description }}</p>{% endif %}
+                                    </div>
+                                    {% endif %}
+                                </div>
+                            {% endfor %}
+                        {% else %}
+
+                        <!-- Slide 1 (fallback) -->
+                        <div class="carousel-item active">
+                            <img src="{% static 'core/images/c1.png' %}" class="d-block w-100 h-100" style="object-fit: cover;" alt="">
+                            <div class="carousel-caption">
+                                <h2>Terres Fertiles</h2>
+                                <p>Valoriser localement les terres inertes pour des projets durables.</p>
+                                <a class="btn btn-primary btn-sm" href="#">En savoir plus</a>
+                            </div>
+                        </div>
+
+                        <!-- Slide 2 (fallback) -->
+                        <div class="carousel-item ">
+                            <img src="{% static 'core/images/c2.png' %}" class="d-block w-100 h-100" style="object-fit: cover;" alt="">
+                            <div class="carousel-caption">
+                                <h2 class="">Traçabilité & Qualité</h2>
+                                <p>Une filière organisée avec expertise agronomique et traçabilité.</p>
+                            </div>
+                        </div>
+
+                        <!-- Slide 3 (fallback) -->
+                        <div class="carousel-item">
+                            <img src="{% static 'core/images/home_terre_fertile.png' %}" class="d-block w-100 h-100" style="object-fit: cover;" alt="">
+                            <div class="carousel-caption">
+                                <h2>Réseau d'acteurs</h2>
+                                <p>Coopération locale pour des sols à haute valeur agronomique.</p>
+                            </div>
+                        </div>
+
+                        {% endif %}
+
+                    </div>
+
+                    <button class="carousel-control-prev" type="button" data-bs-target="#homeCarousel"
+                        data-bs-slide="prev">
+                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                        <span class="visually-hidden">Previous</span>
+                    </button>
+                    <button class="carousel-control-next text-orange" type="button" data-bs-target="#homeCarousel"
+                        data-bs-slide="next">
+                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                        <span class="visually-hidden">Next</span>
+                    </button>
+
+                </div>
+            </div>
+
+            <!-- Colonne droite : vidéo de présentation (50%) -->
+            <div class="col-md-6 d-flex align-items-center justify-content-center">
+                <div class="w-100">
+
+                    <!-- Utilise la classe ratio de Bootstrap pour rendre la vidéo responsive -->
+                    <div class="ratio ratio-16x9 rounded shadow-sm overflow-hidden">
+                        <video id="homeVideo" autoplay muted playsinline controls preload="metadata" poster="{% if homepage and homepage.video_poster %}{{ homepage.video_poster.url }}{% else %}{% static 'core/images/home_terre_fertile.png' %}{% endif %}" class="w-100 h-100 ">
+                            {% if homepage and homepage.video %}
+                                <source src="{{ homepage.video.url }}" type="video/mp4">
+                            {% else %}
+                                <source src="{% static 'core/images/video/Terres-Fertiles-V1.mp4' %}" type="video/mp4">
+                            {% endif %}
+                            Votre navigateur ne supporte pas la lecture vidéo.
+                        </video>
+                    </div>
+
+                    <script>
+                        // Tenter de lancer la vidéo au chargement (certains navigateurs requièrent un play() explicite)
+                        document.addEventListener('DOMContentLoaded', function () {
+                            var v = document.getElementById('homeVideo');
+                            if (!v) return;
+                            try {
+                                v.muted = true; // s'assurer qu'elle est muette
+                                var p = v.play();
+                                if (p && typeof p.then === 'function') {
+                                    p.catch(function (err) {
+                                        // lecture automatique bloquée par le navigateur ; l'utilisateur pourra démarrer la vidéo manuellement
+                                        console.log('Autoplay blocked:', err);
+                                    });
+                                }
+                            } catch (e) {
+                                console.log('Erreur lors de la tentative de lecture automatique:', e);
+                            }
+                        });
+                    </script>
+
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+<!-- SECTION DESCRIPTION -->
+<section class="section section-light container-fluid px-5">
+    <div class="container-philosophie">
+        <div class="row align-items-center g-5">
+
+            <div class="col-lg-4 d-flex justify-content-center">
+                <img src="{% if homepage and homepage.hero_image %}{{ homepage.hero_image.url }}{% else %}{% static 'core/images/home_terre_fertile.png' %}{% endif %}" class="img-fluid philosophe-img rounded shadow-sm"
+                    alt="Terre fertile">
+            </div>
+
+            <div class="col-lg-4 d-flex justify-content-center">
+                <div class="philosophie-card  shadow-sm rounded">
+                    <h1 class="mb-3">{{ homepage.titre_principal|default:titre }}</h1>
+
+                    <p class="lead mb-2">
+                        {{ homepage.description|default:"La terre végétale n’est pas une ressource infinie. Pourtant, elle est indispensable à la végétalisation de nos villes." }}
+                    </p>
+
+
+
+                    <a href="#" class="btn btn-outline-primary mt-2">
+                        Découvrir notre démarche
+                    </a>
+                </div>
+            </div>
+
+            <div class="col-lg-4 d-flex justify-content-center">
+                <img src="{% if homepage and homepage.featured_image_1 %}{{ homepage.featured_image_1.url }}{% else %}{% static 'core/images/home_terre_fertile.png' %}{% endif %}" class="img-fluid philosophe-img rounded shadow-sm"
+                    alt="Terre fertile">
+            </div>
+
+        </div>
+    </div>
+</section>
+
+{% endblock %}

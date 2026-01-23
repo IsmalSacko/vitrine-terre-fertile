@@ -1,0 +1,39 @@
+.site-footer {
+    background: linear-gradient(180deg, #54342f 0%, #3b6a35 100%);
+    color: #fff;
+    padding: 56px 20px;
+}
+
+.footer-inner {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    gap: 24px;
+    align-items: flex-start;
+}
+
+.logo {
+    background: #fff;
+    color: #5aa22b;
+    border-radius: 50%;
+    width: 72px;
+    height: 72px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 700;
+}
+
+.links-col h4,
+.info-col h4 {
+    color: #9ed32b;
+    margin-bottom: 8px;
+}
+
+.links-col ul,
+.info-col ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    color: #fff;
+}

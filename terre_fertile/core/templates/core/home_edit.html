@@ -1,0 +1,97 @@
+{% extends 'core/base.html' %}
+{% load static %}
+
+{% block title %}Modifier la page d'accueil{% endblock %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'core/css/home_edit.css' %}">
+{% endblock %}
+
+{% block content %}
+<div class="home-edit-wrapper">
+  <div class="container-fluid home-edit-card py-5">
+   <div class="row mb-3">
+     <div class="col-12">
+       <h1>Modifier la page d'accueil</h1>
+       <p class="text-muted">Mettez à jour les éléments visibles sur la page d'accueil.
+           Changes are applied after saving.
+       </p>
+     </div>
+   </div>
+
+   <form method="post" enctype="multipart/form-data">
+     {% csrf_token %}
+     <div class="row g-3">
+       <div class="col-12 col-lg-8">
+         <h4>Contenu principal</h4>
+         {{ form.non_field_errors }}
+         <div class="mb-3">
+           {{ form.titre_principal.label_tag }}
+           {{ form.titre_principal }}
+         </div>
+         <div class="mb-3">
+           {{ form.description.label_tag }}
+           {{ form.description }}
+         </div>
+         <div class="mb-3">
+           {{ form.video.label_tag }}
+           {{ form.video }}
+           {% if homepage and homepage.video %}
+             <div class="mt-2 small text-muted">Vidéo actuelle : <a href="{{ homepage.video.url }}" target="_blank">ouvrir</a></div>
+           {% endif %}
+         </div>
+         <div class="mb-3">
+           {{ form.video_poster.label_tag }}
+           {{ form.video_poster }}
+         </div>
+       </div>
+
+       <div class="col-12 col-lg-4">
+         <h4>Images</h4>
+         <div class="mb-3">
+           {{ form.hero_image.label_tag }}
+           {{ form.hero_image }}
+           {% if homepage and homepage.hero_image %}
+             <div class="mt-2"><img src="{{ homepage.hero_image.url }}" alt="hero" style="max-width:100%; height:auto;"></div>
+           {% endif %}
+         </div>
+         <div class="mb-3">
+           {{ form.featured_image_1.label_tag }}
+           {{ form.featured_image_1 }}
+         </div>
+         <div class="mb-3">
+           {{ form.featured_image_2.label_tag }}
+           {{ form.featured_image_2 }}
+         </div>
+       </div>
+     </div>
+
+     <hr>
+
+     <h4>Carousel</h4>
+     {{ formset.management_form }}
+     <div class="row">
+       {% for f in formset.forms %}
+         <div class="col-12 mb-3 carousel-form-card">
+           {% if f.id %}{{ f.id }}{% endif %}
+           <div class="mb-2">{{ f.ordre.label_tag }} {{ f.ordre }}</div>
+           <div class="mb-2">{{ f.image.label_tag }} {{ f.image }}</div>
+           <div class="mb-2">{{ f.titre.label_tag }} {{ f.titre }}</div>
+           <div class="mb-2">{{ f.description.label_tag }} {{ f.description }}</div>
+           <div class="mb-2">{{ f.actif.label_tag }} {{ f.actif }}</div>
+           <div class="mb-2">{{ f.DELETE.label_tag }} {{ f.DELETE }}</div>
+           {% if f.instance and f.instance.image %}
+             <div class="mt-2"><img class="small-preview" src="{{ f.instance.image.url }}" alt="slide"></div>
+           {% endif %}
+         </div>
+       {% endfor %}
+     </div>
+
+     <div class="mt-3">
+       <button class="btn btn-primary" type="submit">Enregistrer</button>
+       <a class="btn btn-secondary bg-danger" href="{% url 'home' %}" style="text-decoration: none">Annuler</a>
+     </div>
+   </form>
+  </div>
+</div>
+{% endblock %}

@@ -1,0 +1,38 @@
+/* Global styles and variables for the Terres Fertiles redesign */
+:root {
+    --brown: #54342f;
+    --green: #9ed32b;
+    --dark-green: #2e5f2b;
+    --muted: #7a7a7a;
+    --max-width: 1200px;
+}
+
+* {
+    box-sizing: border-box
+}
+
+html,
+body {
+    height: 100%;
+    margin: 0;
+    font-family: 'Montserrat', 'Helvetica Neue', Arial, sans-serif;
+    color: #444
+}
+
+body {
+    background: #fff
+}
+
+a {
+    color: inherit
+}
+
+main {
+    min-height: 60vh
+}
+
+/* container utility */
+.container {
+    max-width: var(--max-width);
+    margin: 0 auto
+}

@@ -1,0 +1,147 @@
+/* Styles spécifiques pour la page contact */
+.contact-hero {
+  background: linear-gradient(180deg, rgba(245,246,247,0.6), rgba(245,246,247,0.6));
+}
+
+.contact-cards .card {
+  border-left: 4px solid rgba(90,162,43,0.08);
+}
+
+.contact-form-card {
+  border-radius: 12px;
+}
+
+.contact-form-card .form-control:focus {
+  box-shadow: 0 0 0 0.15rem rgba(90,162,43,0.12);
+  border-color: #5aa22b;
+}
+
+.contact-form-card .btn-success {
+  background-color: #5aa22b;
+  border-color: #4f7c5a;
+}
+
+/* Ensure iframe is clickable and responsive */
+.ratio iframe {
+  min-height: 280px;
+  pointer-events: auto; /* allow clicks */
+}
+
+/* Icon container: avoid deformation on small screens */
+.contact-cards .icon {
+  flex: 0 0 48px; /* fixe la taille du conteneur */
+  width: 48px;
+  height: 48px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.contact-cards .icon svg {
+  width: 22px;
+  height: 22px;
+  display: block; /* éviter les espaces indésirables */
+}
+
+/* Make sure cards do not stretch full width on mobile and are centered */
+.contact-cards .card {
+  width: 100%;
+  max-width: 520px;
+  margin-left: 0; /* default */
+}
+
+/* Center left column content on small screens */
+@media (max-width: 768px) {
+  .contact-cards {
+    align-items: center; /* centre les cards */
+    text-align: center;
+  }
+  .contact-cards .card {
+    margin-left: auto;
+    margin-right: auto;
+  }
+  .contact-form-card {
+    margin-left: auto;
+    margin-right: auto;
+    max-width: 720px; /* évite que le formulaire colle à gauche */
+  }
+  /* give space around the overall container on very small screens */
+  .contact-hero .container {
+    padding-left: 12px;
+    padding-right: 12px;
+  }
+}
+
+/* Slight horizontal centering fix on medium screens if content looks left-aligned */
+@media (min-width: 769px) and (max-width: 991px) {
+  .contact-form-card, .contact-cards .card {
+    max-width: 560px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+}
+
+/* small polish: ensure form aligns and buttons anchored to right on larger screens */
+@media (min-width: 992px) {
+  .contact-form-card .card-body {
+    padding: 28px;
+  }
+  .contact-form-card .btn-success {
+    min-width: 160px;
+  }
+}
+
+/* polish */
+.icon { font-size: 18px; }
+
+/* accessibility */
+.contact-form-card label { font-weight: 600; }
+
+/* ensure consistent spacing */
+.contact-cards .card { background: #fff; }
+
+/* Button hover */
+.contact-form-card .btn-success:hover { background-color: #4f7c5a; }
+
+/* Reset container behavior for the contact page in case other styles override .container globally */
+.contact-hero .container {
+  display: block !important;
+  max-width: 1200px;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 15px;
+  padding-right: 15px;
+  box-sizing: border-box;
+}
+
+.contact-hero .ratio {
+  width: 100%;
+  min-height: 240px;
+  position: relative !important;
+}
+
+/* Keep iframe fully expanded and top layer */
+.contact-hero .ratio iframe {
+  width: 100% !important;
+  height: 100% !important;
+  display: block;
+  position: relative;
+  z-index: 1;
+}
+
+/* Ensure the left column content is centered on small screens and doesn't hug the left edge */
+@media (max-width: 768px) {
+  .contact-hero .col-lg-6:first-child {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  .contact-hero h1, .contact-hero p.lead {
+    text-align: center;
+  }
+}
+
+/* Make sure cards and form keep margins */
+.contact-cards .card, .contact-form-card {
+  box-sizing: border-box;
+}
+

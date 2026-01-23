@@ -1,0 +1,170 @@
+/* Footer styles consolidated and responsive fixes */
+.site-footer {
+    background: linear-gradient(180deg, #54342f 0%, #3b6a35 100%);
+    color: #fff;
+    padding: 56px 20px 28px 20px;
+    box-sizing: border-box;
+
+}
+
+.site-footer * { box-sizing: border-box; }
+
+.footer-inner {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    gap: 24px;
+    align-items: flex-start;
+    justify-content: space-between;
+    flex-wrap: wrap; /* permet l'empilement sur écrans petits */
+}
+
+.logo-col {
+    flex: 0 0 64px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+}
+
+.logo {
+    background: #fff;
+    color: #5aa22b;
+    border-radius: 50%;
+    width: 64px;
+    height: 64px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 700;
+
+}
+
+/* Links area */
+.links-wrap {
+    display: flex;
+    gap: 20px;
+    align-items: flex-start;
+    flex-wrap: wrap; /* permet l'empilement si pas assez d'espace */
+    flex: 1 1 auto; /* occupe le reste de la place disponible */
+}
+
+.links-block {
+    flex: 1 1 0; /* prend la place disponible mais peut rétrécir */
+    text-decoration: none;
+    max-width: 360px; /* évite que les colonnes deviennent trop larges */
+}
+.links-wrap ul li a, .social-col ul li a {
+    text-decoration: none !important;
+}
+/* hover effect for links in links-block */
+
+.links-block ul li a:hover {
+
+    color: rebeccapurple;
+}
+/* Social column (optional) */
+.social-col {
+    flex: 0 0 180px;
+    max-width: 220px;
+}
+
+/* Force white text with higher specificity to override other styles */
+.site-footer .links-block h4,
+.site-footer .social-col h4,
+.site-footer .logo-col .logo {
+    color: #fff !important;
+}
+
+/* Titles and list items: controlled sizes to avoid overflow */
+.site-footer h4 {
+    font-size: clamp(0.9rem, 1.1vw, 1rem) !important;
+    margin: 0 0 0.5rem 0;
+    line-height: 1.1;
+    text-transform: uppercase;
+    letter-spacing: 0.6px;
+}
+
+.site-footer ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.site-footer ul li {
+    font-size: clamp(0.85rem, 1.2vw, 0.95rem);
+    line-height: 1.45;
+    margin-bottom: 6px;
+    overflow-wrap: anywhere; /* permet le retour à la ligne sur mots longs */
+    word-break: break-word;
+}
+
+/* Links forced to white and allowed to wrap */
+.site-footer a {
+    color: #fff !important;
+    text-decoration: none;
+    display: inline-block;
+    overflow-wrap: anywhere;
+    word-break: break-word;
+}
+.site-footer a:hover {
+
+       background: linear-gradient(180deg, #54342f 0%, #356a5e 100%);
+         color: white;
+
+}
+
+/* Footer bottom */
+.footer-bottom {
+    margin-top: 20px;
+    font-size: .95rem;
+    opacity: .95;
+    text-align: center;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .footer-inner {
+        gap: 18px;
+        align-items: center;
+        text-align: center;
+    }
+    .logo-col {
+        display: none;
+        order: -1; /* logo au dessus */
+        width: 100%;
+
+        justify-content:center;
+        margin-bottom: 6px;
+    }
+    .links-wrap {
+        flex-direction: column;
+        gap: 12px;
+        align-items: center;
+    }
+    .links-block {
+        width: 100%;
+        max-width: 520px;
+        padding: 6px 12px;
+    }
+    /* hide social column on small screens to reduce clutter */
+    .social-col {
+        display: none;
+    }
+}
+
+@media (min-width: 769px) {
+    .links-wrap { flex-direction: row; }
+    .links-block { padding: 0; }
+}
+
+/* Very small screens */
+@media (max-width: 420px) {
+    .site-footer { padding: 36px 12px 20px 12px; }
+    .logo { width: 56px; height: 56px; }
+    .footer-bottom { font-size: .88rem; }
+    .site-footer h4 { font-size: .95rem !important; }
+    .site-footer ul li { font-size: .88rem; }
+}

@@ -1,0 +1,1 @@
+terre_fertile/core/static/core/images/video/*.mp4 filter=lfs diff=lfs merge=lfs -text

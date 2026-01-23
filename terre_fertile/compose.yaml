@@ -1,0 +1,15 @@
+services:
+  db:
+    image: postgres:15
+    container_name: terres_fertiles_db
+    environment:
+      POSTGRES_DB: terres_fertiles
+      POSTGRES_USER: terres_fertiles
+      POSTGRES_PASSWORD: terres_fertiles
+    ports:
+      - "5432:5432"
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+
+volumes:
+  pgdata:

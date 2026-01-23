@@ -1,0 +1,57 @@
+:host {
+    display: block;
+}
+
+.team-grid {
+    display: flex;
+    justify-content: space-between;
+    gap: 24px;
+    max-width: 1100px;
+    margin: 0 auto;
+}
+
+.member {
+    text-align: center;
+    flex: 1;
+    padding: 24px 8px;
+}
+
+@media (max-width: 768px) {
+    .team-grid {
+        flex-direction: column;
+        gap: 16px;
+        padding-left: 12px;
+        padding-right: 12px;
+    }
+
+    .member {
+        width: 100%;
+    }
+}
+
+.avatar {
+    width: 180px;
+    height: 180px;
+    margin: 0 auto 18px;
+    background: #eaeaea;
+    border-radius: 50%;
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.08);
+}
+
+.name {
+    font-size: 20px;
+    color: #6b6b6b;
+    font-weight: 600;
+    margin-bottom: 8px;
+}
+
+.role {
+    color: #3b7a2f;
+    font-weight: 700;
+    font-size: 13px;
+    margin-bottom: 14px;
+}
+
+.more {
+    color: #9a9a9a;
+}

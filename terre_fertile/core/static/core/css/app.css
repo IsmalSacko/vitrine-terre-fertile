@@ -1,0 +1,114 @@
+
+
+/* Global styles and variables for the Terres Fertiles redesign */
+:root {
+    --brown: #54342f;
+    --green: #9ed32b;
+    --dark-green: #2e5f2b;
+    --muted: #7a7a7a;
+    --max-width: 1200px;
+}
+
+* {
+    box-sizing: border-box
+}
+
+html,
+body {
+    height: 100%;
+    margin: 0;
+    font-family: 'Montserrat', 'Helvetica Neue', Arial, sans-serif;
+    color: #444
+}
+
+body {
+    background: #fff
+}
+
+a {
+    color: inherit
+}
+
+main {
+    min-height: 60vh
+}
+
+.home-container {
+    max-width: var(--max-width);
+    margin: 0 auto;
+    padding: 20px
+}
+.home-container h1 {
+    color: var(--brown);
+    text-align: center;
+    margin-bottom: 40px;
+    color: #9ed32b;
+}
+.home-container p {
+    font-size: 1.1em;
+    line-height: 1.6;
+    margin-bottom: 10px;
+    color: var(--muted);
+    text-align: justify;
+}
+.desc-container {
+    display: flex !important;
+  
+   
+    
+}
+.home-image {
+    max-width: 600px;
+   
+    height: auto;
+    padding: 20px;
+    border-top-left-radius: 70px;
+    border-bottom-right-radius: 70px;
+    margin-right: 45px;
+     
+}
+
+/* Make images scale to container and avoid overflow */
+img, picture, video, iframe {
+    max-width: 100%;
+    height: auto;
+    display: block;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .desc-container {
+        display: flex !important;
+        flex-direction: column;
+        gap: 12px;
+        align-items: stretch;
+    }
+
+    .home-image {
+        max-width: 100%;
+        padding: 8px 0;
+        margin-right: 0;
+        border-top-left-radius: 28px;
+        border-bottom-right-radius: 28px;
+        width: 100%;
+    }
+
+    .home-container {
+        padding-left: 12px;
+        padding-right: 12px;
+    }
+}
+
+/* Force media inside Bootstrap ratio to fully cover container and avoid background bars */
+.ratio video,
+.ratio iframe,
+.ratio img,
+.ratio picture {
+    width: 100% !important;
+    height: 100% !important;
+    position: absolute !important;
+    inset: 0 !important;
+    object-fit: cover !important;
+    display: block; /* avoid inline baseline gaps */
+    background: transparent !important;
+}

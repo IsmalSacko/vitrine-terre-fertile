@@ -1,0 +1,120 @@
+/* Styles pour la page d'édition de la home
+   - palette basée sur theme.css
+   - responsive, cartes, previews d'images/vidéos
+*/
+:root{
+  --terre-brun: #6B4F3F;
+  --foret-vert: #2F6B4F;
+  --light-bg: #fbfaf8;
+  --muted: #7a7a7a;
+}
+
+.home-edit-wrapper{
+  background: linear-gradient(180deg, var(--light-bg), #fff);
+  padding: 36px 18px;
+}
+
+.home-edit-card{
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.06);
+  padding: 22px;
+  border-left: 6px solid var(--foret-vert);
+  max-width: 1100px; /* constrain width for readability */
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* Ensure heading and intro occupy full width (avoid accidental multi-column layout) */
+.home-edit-card > h1,
+.home-edit-card > p {
+  display: block !important;
+  width: 100% !important;
+  margin-bottom: 1rem;
+}
+
+.home-edit-card h1{ font-size: clamp(1.4rem, 2.8vw, 2rem); }
+.home-edit-card h4{ color: var(--terre-brun); margin-top: .5rem }
+
+.form-row-title{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap: 12px;
+}
+
+.form-control, .form-select, textarea{
+  border-radius: 8px;
+  border: 1px solid #e7e5e2;
+  padding: .6rem .8rem;
+  width: 100%; /* ensure full width inside columns */
+}
+
+textarea.form-control{ min-height:120px; }
+
+/* File inputs */
+.input-file-label{
+  display:inline-block;
+  background: #f6f6f6;
+  padding: .45rem .7rem;
+  border-radius: 8px;
+  border: 1px dashed #e6e3de;
+  color: var(--muted);
+  font-size: .95rem;
+}
+
+.preview-img{
+  display:block;
+  max-width: 100%;
+  height: auto;
+  border-radius: 8px;
+  margin-top: .5rem;
+  border: 1px solid #eee;
+}
+
+/* Carousel formset cards */
+.carousel-form-card{
+  background: linear-gradient(180deg,#fff,#fcfcfc);
+  border-radius: 10px;
+  padding: 12px;
+  box-shadow: 0 6px 18px rgba(0,0,0,0.04);
+}
+.carousel-form-card .small-preview{
+  max-width: 220px;
+  border-radius: 8px;
+  border:1px solid #f0f0f0;
+}
+
+/* Buttons */
+.btn-primary{
+  background-color: var(--foret-vert);
+  border-color: var(--foret-vert);
+}
+.btn-primary:hover{ background-color: #25563f; border-color:#25563f }
+.btn-secondary{ background: transparent; border:1px solid #ccc }
+
+/* Responsive adjustments */
+@media (max-width: 991px){
+  .home-edit-card{ padding: 16px }
+  .carousel-form-card{ padding:10px }
+  /* Force columns to stack nicely */
+  .home-edit-card .col-lg-8,
+  .home-edit-card .col-lg-4,
+  .home-edit-card .col-12 {
+    flex: 0 0 100% !important;
+    max-width: 100% !important;
+    width: 100% !important;
+  }
+}
+
+@media (max-width: 576px){
+  .home-edit-wrapper{ padding: 18px 8px }
+  .form-row-title{ flex-direction:column; align-items:flex-start }
+  .home-edit-card h1{ font-size: 1.4rem }
+}
+
+/* Small helper */
+.helper-text{ color: var(--muted); font-size: .9rem }
+
+/* Ensure images/video previews don't overflow */
+.preview-media{ max-width:100%; height:auto; display:block }

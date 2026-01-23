@@ -1,0 +1,48 @@
+# Docker
+# syntax=docker/dockerfile:1
+
+ARG PYTHON_VERSION=3.11.2
+FROM python:${PYTHON_VERSION}-slim
+
+ENV PYTHONDONTWRITEBYTECODE=1
+ENV PYTHONUNBUFFERED=1
+
+WORKDIR /app
+
+# Create non-root user
+ARG UID=10001
+RUN adduser \
+    --disabled-password \
+    --gecos "" \
+    --home "/home/appuser" \
+    --shell "/bin/sh" \
+    --uid "${UID}" \
+    appuser
+
+# Install dependencies
+COPY requirements.txt .
+RUN pip install --no-cache-dir -r requirements.txt
+
+# Install system dependencies needed for runtime checks (pg_isready)
+RUN apt-get update \
+    && apt-get install -y --no-install-recommends postgresql-client \
+    && rm -rf /var/lib/apt/lists/*
+
+# Copy entrypoint
+COPY entrypoint.sh /entrypoint.sh
+# Ensure file uses Unix line endings (in case checked out with CRLF on Windows)
+RUN sed -i 's/\r$//' /entrypoint.sh || true
+RUN chmod +x /entrypoint.sh
+
+# Copy project
+COPY . .
+
+# Fix permissions
+RUN chown -R appuser:appuser /app /entrypoint.sh
+
+USER appuser
+
+EXPOSE 8000
+
+ENTRYPOINT ["/entrypoint.sh"]
+CMD ["gunicorn", "edumali.wsgi:application", "--bind=0.0.0.0:8000"]

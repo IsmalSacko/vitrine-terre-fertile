@@ -1,0 +1,98 @@
+{% extends "core/base.html" %}
+{% load static %}
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'core/css/mission.css' %}">
+{% endblock %}
+
+{% block title %}Nos missions – Terres Fertiles{% endblock %}
+
+{% block content %}
+
+<!-- HERO -->
+<!-- HERO -->
+<section class="tf-missions-hero">
+  <div class="container text-center tf-hero-content">
+    <h1 class="mb-3">Nos missions</h1>
+    <p class="lead">
+      Structurer une filière locale de réemploi et de valorisation
+      des terres issues de chantiers urbains.
+    </p>
+  </div>
+</section>
+
+
+<!-- MISSIONS -->
+<section class="tf-missions-section container py-5">
+
+  <div class="row g-4">
+
+    <!-- Études agro-pédologiques -->
+    <div class="col-md-6 col-lg-4">
+      <article class="tf-mission-card">
+        <div class="tf-mission-icon">🌱</div>
+        <h3>Études agro-pédologiques</h3>
+        <p>
+          Analyses complètes des sols afin d’évaluer leur potentiel
+          agronomique et leur aptitude aux usages paysagers.
+        </p>
+        <ul>
+          <li>Analyses physiques, chimiques et biologiques</li>
+          <li>Diagnostic de fertilité</li>
+          <li>Préconisations techniques</li>
+        </ul>
+      </article>
+    </div>
+
+    <!-- Faiseurs de terres -->
+    <div class="col-md-6 col-lg-4">
+      <article class="tf-mission-card">
+        <div class="tf-mission-icon">🏗️</div>
+        <h3>Faiseurs de terres</h3>
+        <p>
+          Transformation de terres inertes locales en sols fertiles
+          adaptés aux projets d’aménagement urbain.
+        </p>
+        <ul>
+          <li>Réemploi de terres de chantier</li>
+          <li>Mélanges agronomiques sur mesure</li>
+          <li>Traçabilité des matériaux</li>
+        </ul>
+      </article>
+    </div>
+
+    <!-- Assistance MOE -->
+    <div class="col-md-6 col-lg-4">
+      <article class="tf-mission-card">
+        <div class="tf-mission-icon">📐</div>
+        <h3>Assistance à Maîtrise d’Œuvre</h3>
+        <p>
+          Accompagnement des équipes de conception et de réalisation
+          sur l’ensemble du cycle de projet.
+        </p>
+        <ul>
+          <li>Aide à la rédaction des CCTP</li>
+          <li>Suivi de mise en œuvre des sols</li>
+          <li>Contrôles qualité</li>
+        </ul>
+      </article>
+    </div>
+
+  </div>
+
+</section>
+
+<!-- CTA -->
+<section class="tf-missions-cta">
+  <div class="container text-center text-white">
+    <h2>Des sols fertiles pour des villes durables</h2>
+    <p>
+      Une approche circulaire, locale et responsable
+      au service des territoires.
+    </p>
+    <a href="{% url 'contact' %}" class="btn btn-outline-light btn-lg mt-3">
+      Nous contacter
+    </a>
+  </div>
+</section>
+
+{% endblock %}

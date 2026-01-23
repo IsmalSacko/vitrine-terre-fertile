@@ -1,0 +1,487 @@
+/* ==============================
+   VARIABLES GLOBALES
+================================ */
+:root {
+    --terre-brun: #6B4F3F;
+    --foret-vert: #2F6B4F;
+    --vert-clair: #8FBFA3;
+    --ocre-mineral: #C2A14D;
+    --gris-urbain: #4A4A4A;
+    --beige-clair: #F5F1EB;
+    --blanc: #ffffff;
+}
+.updateBtn{
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+     background-color: var(--terre-brun) !important;
+    color: var(--blanc) !important;
+
+}
+.updateBtn:hover{
+    text-decoration: none;
+    background-color: var(--foret-vert) !important;
+    color: red !important;
+
+}
+/* ==============================
+   BASE
+================================ */
+body {
+    font-family: 'Inter', 'Roboto', sans-serif;
+    color: var(--gris-urbain);
+    background-color: var(--beige-clair);
+    line-height: 1.6;
+}
+
+h1,
+
+h3,
+h4,
+h5 {
+    font-family: 'Montserrat', 'Poppins', sans-serif;
+    color: var(--terre-brun);
+    font-weight: 600;
+}
+
+/* ==============================
+   LIENS
+================================ */
+a {
+    color: var(--foret-vert);
+    text-decoration: none;
+}
+
+a:hover {
+    color: var(--terre-brun);
+    text-decoration: underline;
+}
+
+/* ==============================
+   BOUTONS (SURCHARGE BOOTSTRAP)
+================================ */
+.btn-primary {
+    background-color: var(--foret-vert);
+    border-color: var(--foret-vert);
+}
+
+.btn-primary:hover {
+    background-color: #25563f;
+    border-color: #25563f;
+}
+
+.btn-outline-primary {
+    color: var(--foret-vert);
+    border-color: var(--foret-vert);
+}
+
+.btn-outline-primary:hover {
+    background-color: var(--foret-vert);
+    color: var(--blanc);
+}
+
+/* Bouton secondaire */
+.btn-secondary {
+    background-color: var(--terre-brun);
+    border-color: var(--terre-brun);
+}
+
+.btn-secondary:hover {
+    background-color: #573f32;
+}
+
+/* ==============================
+   SECTIONS
+================================ */
+.section {
+    padding: 80px 0;
+}
+
+.container-philosophie {
+    width: 100%;   
+ 
+    
+}
+
+.philosophie-card {
+    background: var(--blanc);
+    border-left: 6px solid var(--foret-vert);
+    max-width: 520px;
+    
+}
+
+.philosophe-img {
+    
+    width: 100%;
+    object-fit: cover;
+    transform: translateY(0);
+}
+/* responsive rules moved to the consolidated block at the end of the file */
+
+.section-light {
+    background-color: var(--blanc);
+}
+
+.section-beige {
+    background-color: var(--beige-clair);
+}
+
+/* small-screen rules consolidated further down */
+
+.section-green {
+    background-color: var(--foret-vert);
+    color: var(--blanc);
+}
+
+.section-green h2,
+.section-green h3 {
+    color: var(--blanc);
+}
+
+/* ==============================
+   CARTES
+================================ */
+.card {
+    border: none;
+    border-radius: 14px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.06);
+}
+
+.card-title {
+    color: var(--terre-brun);
+}
+
+.card-icon {
+    font-size: 40px;
+    color: var(--foret-vert);
+    margin-bottom: 15px;
+}
+
+/* ==============================
+   HERO
+================================ */
+.hero {
+    background: linear-gradient(rgba(47, 107, 79, 0.85),
+            rgba(47, 107, 79, 0.85)),
+        url("../images/home_terre_fertile.png") center / cover no-repeat;
+    color: var(--blanc);
+    padding: 120px 0;
+}
+
+.hero h1 {
+    color: var(--blanc);
+    font-size: 3rem;
+}
+
+.hero p {
+    font-size: 1.2rem;
+}
+
+
+
+/* =========================
+   HERO / CAROUSEL
+========================= */
+.hero-carousel {
+   
+    /* full-bleed carousel (edge-to-edge) */
+    width: 97vw;
+    position: relative;
+    left: 50%;
+    right: 50%;
+    margin-left: -48.5vw;
+    margin-right: -48.5vw;
+
+    /* hauteur configurable pour le bloc hero (utilisée par les deux colonnes) */
+    --hero-height: 60vh;
+}
+
+/* Faire en sorte que les deux colonnes (carousel / vidéo) prennent la même hauteur */
+.hero-carousel .row {
+    align-items: stretch; /* garantir que les colonnes s'étirent */
+}
+
+.hero-carousel .col-md-6 {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+    padding-left: 12px; /* conserver un léger espacement intérieur */
+    padding-right: 12px;
+    box-sizing: border-box;
+}
+
+/* Appliquer bordure + border-radius au parent de chaque media pour uniformité */
+.hero-carousel .carousel,
+.hero-carousel .ratio {
+    flex: 1 1 auto;            /* occuper toute la hauteur disponible de la colonne */
+    min-height: var(--hero-height);
+    max-height: var(--hero-height);
+    height: var(--hero-height);
+    border: 5px solid var(--foret-vert);
+    border-radius: 20px;
+    overflow: hidden;
+    background: transparent;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.06);
+    box-sizing: border-box;
+    padding: 0;
+}
+
+/* S'assurer que l'intérieur du carousel occupe 100% en hauteur */
+.hero-carousel .carousel .carousel-inner {
+    height: 100%;
+    padding: 0;
+}
+
+/* Forcer les items du carousel à occuper 100% et rester positionnés */
+.hero-carousel .carousel .carousel-inner .carousel-item {
+    height: 100%;
+    min-height: 0;
+    position: relative; /* nécessaire pour que la caption soit un overlay */
+    display: block;
+}
+
+/* S'assurer que tous les medias dans un slide remplissent leur conteneur */
+.hero-carousel .carousel .carousel-inner .carousel-item > img,
+.hero-carousel .carousel .carousel-inner .carousel-item > .ratio,
+.hero-carousel .carousel .carousel-inner .carousel-item video,
+.hero-carousel .carousel .carousel-inner .carousel-item iframe {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+/* Forcer la caption en overlay pour qu'elle ne modifie pas la hauteur du slide */
+.carousel-caption {
+    position: absolute; /* important : overlay */
+    z-index: 10;
+    left: auto;
+    right: 3rem; /* valeur par défaut, redéfinie dans les @media si besoin */
+    bottom: 1.5rem; /* placer la caption légèrement au-dessus du bord */
+    background: rgba(47, 107, 79, 0.75);
+}
+
+/* Petits écrans : garder le centrage mais s'assurer que la position reste absolute */
+@media (max-width: 768px) {
+    .carousel-item .carousel-caption {
+        position: absolute !important;
+    }
+}
+
+/* Responsive adjustments: réduire la hauteur du hero sur petits écrans */
+@media (max-width: 992px) {
+    .hero-carousel {
+        --hero-height: 50vh;
+    }
+}
+
+@media (max-width: 768px) {
+    .hero-carousel {
+        --hero-height: 45vh;
+        width: 100vw;
+        left: 0;
+        margin-left: 0;
+        margin-right: 0;
+    }
+
+    .hero-carousel .col-md-6 {
+        padding-left: 8px;
+        padding-right: 8px;
+    }
+
+    .carousel-caption {
+        padding: 15px;
+        left: 50%;
+        right: auto;
+        transform: translateX(-50%);
+        bottom: 12%;
+        max-width: 90%;
+    }
+}
+
+@media (max-width: 576px) {
+    .hero-carousel {
+        --hero-height: 35vh;
+    }
+}
+
+/* =========================
+   TEXTE
+========================= */
+.lead {
+    color: var(--terre-brun);
+    font-weight: 500;
+}
+
+
+
+
+@media (max-width: 768px) {
+    /* mobile portrait */
+    .row.align-items-center.g-5 {
+        gap: 20px;
+    }
+
+    .philosophe-img {
+        max-width: 100%;
+        transform: none;
+    }
+
+    .philosophie-card {
+        padding: 18px;
+    }
+
+    .carousel-item img {
+        height: 45vh;
+        min-height: 240px;
+    }
+
+    .carousel-caption {
+        padding: 15px;
+        left: 50%;
+        right: auto;
+        transform: translateX(-50%);
+        bottom: 12%;
+        max-width: 90%;
+    }
+
+    /* Keep caption as overlay but make it centered and fluid on small screens */
+    .carousel-item .carousel-caption {
+        position: absolute !important;
+        left: 50% !important;
+        transform: translateX(-50%) !important;
+        bottom: 8% !important;
+        z-index: 5;
+        margin: 0;
+        width: min(520px, calc(100% - 36px));
+        max-width: none;
+        text-align: center;
+        background: rgba(47, 107, 79, 0.88);
+        border-radius: 8px;
+        padding: 12px 16px;
+    }
+
+    .carousel-item .carousel-caption h2 {
+        font-size: 1.1rem;
+        line-height: 1.15;
+        margin-bottom: 6px;
+    }
+
+    .carousel-item .carousel-caption p {
+        font-size: 0.95rem;
+        margin: 0;
+    }
+
+    .section {
+        padding: 40px 0;
+    }
+
+    h1 {
+        font-size: 1.8rem;
+    }
+}
+
+@media (max-width: 992px) {
+    /* tablet and below */
+    .container-philosophie {
+        padding-left: 12px;
+        padding-right: 12px;
+    }
+
+    .philosophie-card {
+        width: 100%;
+        border-left-width: 4px;
+    }
+
+    .carousel-item img {
+        height: 50vh;
+    }
+
+    .carousel-caption {
+        max-width: 420px;
+    }
+
+    .section {
+        padding: 60px 0;
+    }
+}
+
+@media (max-width: 576px) {
+    /* small phones */
+    .carousel-item img {
+        height: 35vh;
+        min-height: 180px;
+    }
+
+    .carousel-caption {
+        padding: 10px;
+        font-size: 0.95rem;
+        bottom: 8%;
+    }
+
+    .section {
+        padding: 24px 0;
+    }
+
+    .lead {
+        font-size: 1rem;
+    }
+}
+
+@media (max-width: 480px) {
+    /* last-resort overflow guard */
+    html, body {
+        overflow-x: hidden;
+    }
+}
+
+/* ==============================
+   PHILOSOPHIE — ALIGNEMENT EGAL
+   Version améliorée : on utilise une hauteur desktop fixe via une variable
+   pour garantir un alignement pixel-perfect entre image / carte / image.
+================================= */
+@media (min-width: 992px) {
+    .container-philosophie .row.align-items-center.g-5 {
+        /* hauteur de référence des éléments (ajustable) */
+        --philo-height: 420px;
+        align-items: stretch;
+    }
+
+    /* Faire en sorte que chaque colonne prenne toute la hauteur disponible */
+    .container-philosophie .row.align-items-center.g-5 > .col-lg-4 {
+        display: flex !important;
+        flex-direction: column;
+        align-items: stretch;
+        justify-content: center;
+        box-sizing: border-box;
+        padding-left: 12px;
+        padding-right: 12px;
+    }
+
+    /* Forcer une hauteur identique pour l'image et la carte */
+    .container-philosophie .row.align-items-center.g-5 > .col-lg-4 > img.philosophe-img {
+        height: var(--philo-height);
+        max-height: var(--philo-height);
+        width: 100%;
+        object-fit: cover;
+        display: block;
+    }
+
+    .container-philosophie .row.align-items-center.g-5 > .col-lg-4 > .philosophie-card {
+        height: var(--philo-height);
+        max-height: var(--philo-height);
+        width: 100%;
+        box-sizing: border-box;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        padding: 24px;
+        overflow: auto; /* si le contenu dépasse, permettre le scroll interne */
+    }
+
+    /* S'assurer que le contenu de la carte ne provoque pas de décalage */
+    .container-philosophie .philosophie-card .lead,
+    .container-philosophie .philosophie-card p {
+        margin-bottom: 0.8rem;
+    }
+}

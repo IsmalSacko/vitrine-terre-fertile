@@ -1,0 +1,42 @@
+
+{% load static %}
+<footer class="site-footer">
+    <div class="footer-inner">
+        <div class="logo-col">
+            <div class="logo">
+                <img src="{% static 'core/images/tf.png' %}" alt="Logo Terres Fertiles">
+            </div>
+        </div>
+
+        <!-- Zone de liens regroupés (A PROPOS + INFORMATIONS) -->
+        <div class="links-wrap">
+            <div class="links-block">
+                <h4>A PROPOS</h4>
+                <ul>
+                    <li><a href="{% url 'home' %}">Accueil</a></li>
+                    <li><a href="{% url 'about' %}">Philosophie</a></li>
+                    <li><a href="{% url 'missions' %}">Équipe</a></li>
+                </ul>
+            </div>
+            <div class="links-block">
+                <h4>INFORMATIONS</h4>
+                <ul>
+                    <li><a href="{% url 'missions' %}">Missions</a></li>
+                    <li><a href="{% url 'contact' %}">Contact</a></li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Colonne réseaux (optionnelle) -->
+        <div class="social-col" aria-label="Réseaux sociaux">
+            <h4>NOUS SUIVRE</h4>
+            <ul>
+                <li><a href="https://www.linkedin.com" target="_blank" rel="noopener">LinkedIn</a></li>
+                <li><a href="https://www.facebook.com" target="_blank" rel="noopener">Facebook</a></li>
+            </ul>
+        </div>
+    </div>
+    <div class="footer-bottom text-center">
+        &copy; {% now "Y" %} Terres Fertiles — Tous droits réservés
+    </div>
+</footer>

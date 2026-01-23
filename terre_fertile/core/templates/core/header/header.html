@@ -1,0 +1,21 @@
+{% load static %}
+<header class="site-header">
+    <div class="header-inner">
+        <div class="brand">
+            <div class="logo">
+                <a href="/">
+                    <img src="{% static 'core/images/tf.png' %}" alt="Logo Terres Fertiles">
+                </a>
+            </div>
+        </div>
+        <button class="nav-toggle" aria-expanded="false" aria-label="Menu">
+            <span class="hamburger"></span>
+        </button>
+        <nav class="main-nav">
+            <a href="/" class="nav-item active">ACCUEIL</a>
+            <a href="/a-propos" class="nav-item">A PROPOS</a>
+            <a href="/missions" class="nav-item">LES MISSIONS</a>
+            <a href="/contact" class="nav-item">CONTACT</a>
+        </nav>
+    </div>
+</header>
